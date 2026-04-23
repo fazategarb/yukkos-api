@@ -18,11 +18,11 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
-  .setTitle('Yukkos API')
-  .setDescription('API documentation for Yukkos')
-  .setVersion('1.0')
-  .addBearerAuth()
-  .build();
+    .setTitle('Yukkos API')
+    .setDescription('API documentation for Yukkos')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);

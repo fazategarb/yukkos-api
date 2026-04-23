@@ -5,12 +5,12 @@ import { Property } from '../../domain/entities/property.entity';
 
 @Injectable()
 export class PropertyService {
-    constructor(
-        @InjectRepository(Property)
-        private propertyRepo: Repository<Property>,
-    ) {}
+  constructor(
+    @InjectRepository(Property)
+    private propertyRepo: Repository<Property>,
+  ) {}
 
-    async getAllPropertiesRooms() {
-        return await this.propertyRepo.find({ relations: ['rooms'] });
-    }
+  async getAllPropertiesRooms() {
+    return await this.propertyRepo.find({ relations: ['rooms'] });
+  }
 }
