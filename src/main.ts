@@ -25,11 +25,11 @@ async function bootstrap() {
   .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api-docs', app, document);
+  SwaggerModule.setup('api/docs', app, document);
 
   app.enableCors();
 
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
   console.log('Server is running on http://localhost:3000');
 }
 bootstrap();

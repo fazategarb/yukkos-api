@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PropertyModule } from './infrastructure/modules/property.module';
+import { AuthModule } from './application/auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PropertyModule } from './infrastructure/modules/property.module';
       }),
     }),
     PropertyModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
