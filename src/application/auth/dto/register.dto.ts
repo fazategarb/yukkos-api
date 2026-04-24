@@ -24,8 +24,8 @@ export class RegisterDto {
   @MinLength(6, { message: 'Password minimal 6 karakter' })
   password: string;
 
-  @ApiProperty({ enum: UserRole, default: UserRole.OWNER })
-  @IsEnum(UserRole)
-  @IsOptional()
-  role?: UserRole;
+  @ApiProperty({ enum: UserRole, example: UserRole.OWNER, description: 'Pilih sebagai OWNER atau SEEKER' })
+  @IsEnum(UserRole, { message: 'Role harus berupa OWNER atau SEEKER' })
+  @IsNotEmpty({ message: 'Role tidak boleh kosong' })
+  role: UserRole;
 }
