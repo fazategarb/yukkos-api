@@ -19,9 +19,14 @@ export class RegisterDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ example: 'Rahasia123!', minLength: 6 })
+  @IsNotEmpty()
   @IsString()
-  @MinLength(6, { message: 'Password minimal 6 karakter' })
+  @MinLength(10, { message: 'Nomor WhatsApp minimal 10 digit' })
+  phone: string;
+
+  @ApiProperty({ example: 'Rahasia123!', minLength: 8 })
+  @IsString()
+  @MinLength(8, { message: 'Password minimal 8 karakter' })
   password: string;
 
   @ApiProperty({ enum: UserRole, example: UserRole.OWNER, description: 'Pilih sebagai OWNER atau SEEKER' })

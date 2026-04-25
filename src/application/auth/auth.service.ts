@@ -18,13 +18,16 @@ export class AuthService {
   async register(
     registerDto: RegisterDto,
   ): Promise<{ message: string; userId: string }> {
-    const { fullName, email, password, role } = registerDto;
+    const { fullName, email, phone, password, role } = registerDto;
 
     const existingUser = await this.userRepository.findOne({
-      where: { email },
+      where: [
+        { email },
+        { phone }
+      ]
     });
     if (existingUser) {
-      throw new ConflictException('Email sudah terdaftar di sistem Yukkos');
+      throw new ConflictException('Email atau nomor WhatsApp sudah terdaftar di sistem Yukkos');
     }
 
     const saltRounds = 10;
@@ -33,6 +36,7 @@ export class AuthService {
     const newUser = this.userRepository.create({
       fullName,
       email,
+      phone,
       passwordHash,
       role,
     });

@@ -23,6 +23,9 @@ export class User {
   @Column({ type: 'varchar', length: 100, unique: true })
   email: string;
 
+  @Column({ type: 'varchar', length: 20, unique: true })
+  phone: string;
+
   @Column({ type: 'varchar' })
   passwordHash: string;
 
@@ -32,9 +35,6 @@ export class User {
     default: UserRole.SEEKER,
   })
   role: UserRole;
-
-  @Column({ type: 'varchar', length: 20, nullable: true })
-  phoneNumber: string;
 
   @Column({ type: 'boolean', default: false })
   isEmailVerified: boolean;
